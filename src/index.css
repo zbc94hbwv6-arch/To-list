@@ -1,0 +1,239 @@
+:root {
+  color-scheme: light;
+  --bg: #f3efe7;
+  --ink: #1c1915;
+  --muted: #6f695f;
+  --line: #e4ddd2;
+  --paper: #fbf9f5;
+  --fill: #1c1915;
+  --fill-text: #f7f4ee;
+  --hover: #ece7de;
+  --focus: #1c1915;
+  font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+.page {
+  width: min(36rem, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 4.5rem 0 5rem;
+}
+
+.masthead h1 {
+  margin: 0.15rem 0 0;
+  font-family: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  font-size: 3.25rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.eyebrow,
+.lede,
+.summary,
+.empty {
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lede {
+  margin: 0.85rem 0 0;
+  max-width: 26rem;
+}
+
+.composer {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 2.25rem;
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  padding: 0.8rem 1.05rem;
+  outline: none;
+}
+
+.composer input::placeholder {
+  color: #9a9388;
+}
+
+.composer input:focus-visible,
+.delete:focus-visible,
+.composer button:focus-visible,
+.list label:has(input:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.composer button {
+  border: 0;
+  border-radius: 999px;
+  background: var(--fill);
+  color: var(--fill-text);
+  padding: 0.8rem 1.15rem;
+  cursor: pointer;
+}
+
+.composer button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.summary {
+  margin: 1.4rem 0 0;
+  font-size: 0.92rem;
+}
+
+.empty {
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.list {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.list label {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.9rem 0.15rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.list input {
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0.15rem 0 0;
+  opacity: 0;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.15rem;
+  flex: none;
+  border: 1.5px solid #b7b0a6;
+  border-radius: 999px;
+  color: var(--fill-text);
+  pointer-events: none;
+}
+
+.mark svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  opacity: 0;
+}
+
+.list input:checked + .mark {
+  border-color: var(--fill);
+  background: var(--fill);
+}
+
+.list input:checked + .mark svg {
+  opacity: 1;
+}
+
+.title {
+  overflow-wrap: anywhere;
+}
+
+.list li.done .title {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: #8a8378;
+}
+
+.delete {
+  margin-top: 0.72rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.25rem 0.15rem;
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: var(--ink);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 540px) {
+  .page {
+    width: min(36rem, calc(100% - 1.75rem));
+    padding-top: 2.75rem;
+  }
+
+  .masthead h1 {
+    font-size: 2.7rem;
+  }
+
+  .composer {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
